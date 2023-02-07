@@ -57,3 +57,22 @@ tasks.withType<Test> {
 tasks.withType<JavaExec> {
   args = listOf("run", mainVerticleName, "--redeploy=$watchForChange", "--launcher-class=$launcherClassName", "--on-redeploy=$doOnChange")
 }
+
+task<Exec>("buildDocker") {
+     workingDir("${rootDir}")
+     commandLine("echo", "start build")
+     doLast {
+      exec {
+        commandLine("./gradlew", "build")
+      }
+      exec {
+        commandLine("docker", "build", "-t", "java-sidecar", ".")
+      }
+      println("Done")
+     }
+ }
+
+ task<Exec>("runDocker") {
+     workingDir("${rootDir}")
+     commandLine("docker", "run", "-p", "8080:8080", "java-sidecar")
+ }

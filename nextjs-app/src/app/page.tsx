@@ -1,16 +1,33 @@
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import styles from './page.module.css'
+import Image from 'next/image';
+
+import { Inter } from '@next/font/google';
+
+import styles from './page.module.css';
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+async function getData() {
+  const host = process.env.NODE_ENV === 'production' ? 'host.docker.internal' : 'localhost'; 
+  const res = await fetch(`http://${host}:8080`, { cache: 'no-store' });
+  // The return value is *not* serialized
+  // You can return Date, Map, Set, etc.
+
+  // Recommendation: handle errors
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error('Failed to fetch data');
+  }
+
+  return res.text();
+}
+
+export default async function Home() {
+  const apiResult = await getData();
   return (
     <main className={styles.main}>
       <div className={styles.description}>
         <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
+          <>Here's API Result: ${apiResult}</>
         </p>
         <div>
           <a
