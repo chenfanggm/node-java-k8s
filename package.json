@@ -1,0 +1,7 @@
+{
+  "name": "k8s-node-with-java",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Chen Fang <chenfanggm@hotmail.com>",
+  "license": "MIT"
+}
