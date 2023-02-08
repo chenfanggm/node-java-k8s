@@ -27,7 +27,10 @@ export default async function Home() {
     <main className={styles.main}>
       <div className={styles.description}>
         <p>
-          <>Here's API Result: ${apiResult}</>
+          Here's API Result: {apiResult}
+        </p>
+        <p>
+          The request is served from app service port: {process.env.PORT}
         </p>
         <div>
           <a

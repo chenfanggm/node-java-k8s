@@ -13,7 +13,7 @@ spec:
     volumeMounts:
     - name: nginx-config
       mountPath: /etc/nginx/conf.d
-  - name: nextjs-app
+  - name: nextjs-app-1
     image: nextjs-app
     imagePullPolicy: Never
     ports:
@@ -22,6 +22,30 @@ spec:
     env:
     - name: JAVA_SIDECAR_HOST
       value: localhost
+    - name: PORT
+      value: "3000"
+  - name: nextjs-app-2
+    image: nextjs-app
+    imagePullPolicy: Never
+    ports:
+    - containerPort: 3001
+      protocol: TCP
+    env:
+    - name: JAVA_SIDECAR_HOST
+      value: localhost
+    - name: PORT
+      value: "3001"
+  - name: nextjs-app-3
+    image: nextjs-app
+    imagePullPolicy: Never
+    ports:
+    - containerPort: 3002
+      protocol: TCP
+    env:
+    - name: JAVA_SIDECAR_HOST
+      value: localhost
+    - name: PORT
+      value: "3002"
   - name: java-sidecar
     image: java-sidecar
     imagePullPolicy: Never
