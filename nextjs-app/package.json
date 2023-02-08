@@ -8,8 +8,8 @@
     "start": "next start",
     "export": "next export",
     "lint": "next lint",
-    "docker:build": "docker build -t nextjs-docker .",
-    "docker:run": "docker run -p 3000:3000 nextjs-docker"
+    "docker:build": "docker build -t nextjs-app .",
+    "docker:run": "docker run -p 3000:3000 nextjs-app"
   },
   "dependencies": {
     "@next/font": "13.1.6",

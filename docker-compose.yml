@@ -1,11 +1,11 @@
 version: "3.9"
 services:
   web:
-    image: nextjs-docker
+    image: nextjs-app
     ports:
       - "3000:3000"
     environment:
-      FLASK_DEBUG: "true"
+      JAVA_SIDECAR_HOST: "host.docker.internal"
   api:
     image: java-sidecar
     ports:
