@@ -12,7 +12,8 @@ spec:
     - containerPort: 80
     volumeMounts:
     - name: nginx-config
-      mountPath: /etc/nginx/conf.d
+      mountPath: /etc/nginx/nginx.conf
+      subPath: nginx.conf
   - name: nextjs-app-1
     image: nextjs-app
     imagePullPolicy: Never
