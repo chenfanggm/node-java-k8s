@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 async function getData() {
   const host = process.env.NODE_ENV === 'production' ? process.env.JAVA_SIDECAR_HOST : 'localhost'; 
-  const res = await fetch(`http://${host}:8080`, { cache: 'no-store' });
+  const res = await fetch(`http://${host}:8080/api`, { cache: 'no-store' });
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
 
